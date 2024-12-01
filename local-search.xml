@@ -8,7 +8,7 @@
     <link href="/2024/11/30/c/"/>
     <url>/2024/11/30/c/</url>
     
-    <content type="html"><![CDATA[<script type="math/tex; mode=display">\left\{ \begin{array}{l}    \nabla \cdot \boldsymbol{E}=\frac{\rho}{\varepsilon _0}\\    \nabla \times \boldsymbol{E}=-\frac{\partial \boldsymbol{B}}{\partial t}\\    \nabla \cdot \boldsymbol{B}=0\\    c^2\nabla \times \boldsymbol{B}=\frac{\boldsymbol{j}}{\varepsilon _0}+\frac{\partial \boldsymbol{E}}{\partial t}c^2\\\end{array} \right.</script><script type="math/tex; mode=display">e^{i\varphi}=\cos \varphi +i\sin \varphi</script><p><img src="/images/测试/1.jpg" alt="图片"></p><script type="text/javascript"src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>]]></content>
+    <content type="html"><![CDATA[<script type="text/javascript"src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="math/tex; mode=display">\left\{ \begin{array}{l}    \nabla \cdot \boldsymbol{E}=\frac{\rho}{\varepsilon _0}\\    \nabla \times \boldsymbol{E}=-\frac{\partial \boldsymbol{B}}{\partial t}\\    \nabla \cdot \boldsymbol{B}=0\\    c^2\nabla \times \boldsymbol{B}=\frac{\boldsymbol{j}}{\varepsilon _0}+\frac{\partial \boldsymbol{E}}{\partial t}c^2\\\end{array} \right.</script><p>lll</p><script type="math/tex; mode=display">e^{i\varphi}=\cos \varphi +i\sin \varphi</script><p><img src="/images/测试/1.jpg" alt="图片"></p>]]></content>
     
     
     <categories>
