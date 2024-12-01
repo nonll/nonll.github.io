@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>conda配置</title>
+    <link href="/2024/12/01/conda%E9%85%8D%E7%BD%AE/"/>
+    <url>/2024/12/01/conda%E9%85%8D%E7%BD%AE/</url>
+    
+    <content type="html"><![CDATA[<h1 id="安装miniconda"><a href="#安装miniconda" class="headerlink" title="安装miniconda"></a>安装miniconda</h1><h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><h2 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h2><h3 id="1-安装准备工作"><a href="#1-安装准备工作" class="headerlink" title="1. 安装准备工作"></a>1. 安装准备工作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> apt-get update <br><span class="hljs-built_in">sudo</span> apt-get install build-essential<br><span class="hljs-built_in">sudo</span> apt-get install wget<br></code></pre></td></tr></table></figure><p>其中，第一条命令表示更新包列表，第二条命令表示安装构建必需工具，第三条命令表示安装wget，用于从网络下载miniconda安装包。</p><h3 id="2-下载miniconda安装包"><a href="#2-下载miniconda安装包" class="headerlink" title="2. 下载miniconda安装包"></a>2. 下载miniconda安装包</h3><p>可以通过官方网站<a href="https://docs.conda.io/en/latest/miniconda.html">下载</a>miniconda安装包，也可以使用wget从命令行中下载安装包。</p><p><code>wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh</code></p><p>下载完成后，使用以下命令给下载的安装包添加可执行权限：<br><code>chmod +x Miniconda3-latest-Linux-x86_64.sh</code> </p><h3 id="3-安装miniconda"><a href="#3-安装miniconda" class="headerlink" title="3. 安装miniconda"></a>3. 安装miniconda</h3><p>使用以下命令安装miniconda：</p><blockquote><p>-p 指定安装路径</p></blockquote><p><code>sudo sh Miniconda3-latest-Linux-x86_64.sh -p /opt/Miniconda3</code></p><p>安装过程中会出现一些提示，一般来说只需要按照提示按回车键即可。在安装过程中，需要同意许可协议并选择安装路径。如果不确定安装路径，可以选择默认路径。</p><h3 id="4-配置环境变量"><a href="#4-配置环境变量" class="headerlink" title="4. 配置环境变量"></a>4. 配置环境变量</h3><p>安装完成后，需要配置miniconda的环境变量，这样才能在终端中使用conda命令。<br>首先，需要打开.bashrc文件：</p><p><code>vi ~/.bashrc</code></p><p>在文件末尾添加以下内容：</p><p><code>export PATH=&quot;/opt/Miniconda3/bin:$PATH&quot;</code></p><p>其中，username应替换为自己的用户名，安装路径也可能不同。<br>在保存文件并退出后，使用以下命令使配置生效：<br><code>source ~/.bashrc</code><br>现在，可以在终端中使用conda命令了。</p><h3 id="5-添加conda源"><a href="#5-添加conda源" class="headerlink" title="5. 添加conda源"></a>5. 添加conda源</h3><p>如果直接使用官方源下载软件包速度较慢，可以添加清华大学的源来加速下载。</p><p>打开终端，输入以下命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/<br>conda config --<span class="hljs-built_in">set</span> show_channel_urls <span class="hljs-built_in">yes</span><br></code></pre></td></tr></table></figure><p>以上命令将清华大学的conda源添加到本地的配置文件中。之后，conda会优先从清华大学的源中下载软件包。</p><h3 id="6-建立新环境"><a href="#6-建立新环境" class="headerlink" title="6. 建立新环境"></a>6. 建立新环境</h3><p>可以通过conda命令来建立新环境。例如，以下命令将创建名为myenv的环境：</p><p><code>conda create -n myenv</code><br>创建完成后，需要激活环境。使用以下命令激活myenv环境：</p><p><code>conda activate myenv</code></p><h3 id="7-其它"><a href="#7-其它" class="headerlink" title="7. 其它"></a>7. 其它</h3><ol><li>不自动激活base环境 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 不自动激活base环境</span><br>conda config --<span class="hljs-built_in">set</span> auto_activate_base <span class="hljs-literal">false</span><br><span class="hljs-comment"># 自动激活base环境</span><br>conda config --<span class="hljs-built_in">set</span> auto_activate_base <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure></li><li>运行  <code>conda info</code> 命令，出现<code> base environment：...(onlyread)</code>。即无法创建新环境。</li></ol><p>只需修改anaconda3文件夹权限，命令如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 注意 username改为自己的用户名</span><br><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">chown</span> -R username /opt/Miniconda3<br><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">chown</span> -R username .conda<br></code></pre></td></tr></table></figure><ol start="3"><li>.condarc文件</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">channels:<br><span class="hljs-comment"># 源</span><br>  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/<br>  - defaults<br>envs_dirs:<br><span class="hljs-comment"># 环境安装路径</span><br>  - /opt/miniconda3/envs<br>pkgs_dirs:<br><span class="hljs-comment"># 包，库下载路径</span><br>  - /opt/miniconda3/pkgs<br>show_channel_urls: <span class="hljs-literal">true</span><br><span class="hljs-comment"># 不自动激活base环境</span><br>auto_activate_base: <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>配置</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>conda，python，环境配置</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>基于Hexo的主题Fluid搭建Github博客</title>
     <link href="/2024/11/30/%E5%9F%BA%E4%BA%8EHexo%E7%9A%84%E4%B8%BB%E9%A2%98Fluid%E6%90%AD%E5%BB%BAGithub%E5%8D%9A%E5%AE%A2/"/>
     <url>/2024/11/30/%E5%9F%BA%E4%BA%8EHexo%E7%9A%84%E4%B8%BB%E9%A2%98Fluid%E6%90%AD%E5%BB%BAGithub%E5%8D%9A%E5%AE%A2/</url>
